@@ -8,5 +8,6 @@ const func = getLib().func(
  * Similar to `gettext` but select the plural form corresponding to the
  * number `n`.
  */
-export const ngettext = (msgid1: string, msgid2: string, n: number): string =>
-  func(msgid1, msgid2, n);
+export function ngettext(msgid1: string, msgid2: string, n: number): string {
+  return func(msgid1, msgid2, n);
+}

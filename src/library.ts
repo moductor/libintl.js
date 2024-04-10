@@ -3,7 +3,7 @@ import { IKoffiLib, load } from "koffi";
 import { basename } from "path";
 
 let lib: IKoffiLib | undefined;
-export function init(file?: string) {
+export function init(file?: string): void {
   if (lib) return;
   file ??= getLibFile();
 
@@ -11,7 +11,7 @@ export function init(file?: string) {
   lib = load(file);
 }
 
-export function getLib() {
+export function getLib(): IKoffiLib {
   init();
   return lib!;
 }

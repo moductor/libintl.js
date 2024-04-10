@@ -7,4 +7,6 @@ const func = getLib().func("char *gettext (char *__msgid)");
  * LC_MESSAGES locale.  If not found, returns `msgid` itself (the default
  * text).
  */
-export const gettext = (msgid: string): string => func(msgid);
+export function gettext(msgid: string): string {
+  return func(msgid);
+}
