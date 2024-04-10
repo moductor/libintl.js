@@ -1,7 +1,7 @@
 import { getLib } from "../library";
 
 const func = getLib().func(
-  "char *ngettext (char *__msgid1, char *__msgid2, unsigned long int __n)",
+  "char *ngettext (char *__msgid1, char *__msgid2, int __n)",
 );
 
 /**
