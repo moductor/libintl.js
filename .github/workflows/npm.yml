@@ -17,7 +17,12 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          registry-url: "https://registry.npmjs.org"
       - run: npm install
       - run: .github/workflows/jsr2npm.sh
         env:
           NPM_PUBLISH_ARGS: --provenance
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
