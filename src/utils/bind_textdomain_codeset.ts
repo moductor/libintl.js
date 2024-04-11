@@ -5,8 +5,8 @@ const func = getLib().func(
 );
 
 /**
- * Specify that the `domainName` message catalog will be found
- * in `dirName` rather than in the system locale data base.
+ * Specify the character encoding in which the messages from the
+ * `domainName` message catalog will be returned.
  */
 export function bindTextDomainCodeset(
   domainName: string,

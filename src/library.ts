@@ -3,17 +3,24 @@ import { IKoffiLib, load } from "koffi";
 import { basename } from "path";
 
 let lib: IKoffiLib | undefined;
+export function getLib(): IKoffiLib {
+  init();
+  return lib!;
+}
+
+/**
+ * Initializes the libintl static `lib`.
+ *
+ * Optionally you can provide the static library `file` path.
+ *
+ * If loading of the library fails, error is thrown.
+ */
 export function init(file?: string): void {
   if (lib) return;
   file ??= getLibFile();
 
   if (!file) throw new Error("error finding a library file");
   lib = load(file);
-}
-
-export function getLib(): IKoffiLib {
-  init();
-  return lib!;
 }
 
 function getLibFile() {
