@@ -1,10 +1,7 @@
 {
   "name": "libintl",
   "description": "JavaScript bindings for libraries implementing GetText. (GLib, libintl, libc, …)",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/moductor/libintl.js"
-  },
+  "repository": "moductor/libintl.js",
   "license": "MIT",
   "type": "module",
   "devDependencies": {

@@ -37,4 +37,8 @@ DIST_DIR_EXT="$DIST_DIR/$DIST_DIR_EXT_NAME"
 tmp=$(mktemp)
 jq ".name = \"$NPM_PACKAGE\"" "$DIST_DIR_EXT/package.json" > "$tmp" && mv "$tmp" "$DIST_DIR_EXT/package.json"
 
+tmp=$(mktemp)
+REPOSITORY=$(cat package.json | jq -r .repository)
+jq ".repository = \"$REPOSITORY\"" "$DIST_DIR_EXT/package.json" > "$tmp" && mv "$tmp" "$DIST_DIR_EXT/package.json"
+
 npm publish "./$DIST_DIR_EXT" $NPM_PUBLISH_ARGS
