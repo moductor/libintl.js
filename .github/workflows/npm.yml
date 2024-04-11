@@ -1,0 +1,23 @@
+name: Publish to NPM
+
+on:
+  workflow_run:
+    workflows:
+      - "Publish to JSR"
+    branches:
+      - main
+    types:
+      - completed
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install
+      - run: .github/workflows/jsr2npm.sh
+        env:
+          NPM_PUBLISH_ARGS: --provenance
