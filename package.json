@@ -3,19 +3,17 @@
   "description": "JavaScript bindings for libraries implementing GetText. (GLib, libintl, libc, …)",
   "license": "MIT",
   "type": "module",
-  "dependencies": {
-    "koffi": "^2.8.4"
-  },
   "devDependencies": {
     "@types/node": "^20.12.7",
-    "@typescript-eslint/eslint-plugin": "^7.6.0",
-    "@typescript-eslint/parser": "^7.6.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.4"
   },
   "prettier": {
     "editorconfig": true
+  },
+  "dependencies": {
+    "koffi": "^2.8.4"
   }
 }
