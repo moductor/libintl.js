@@ -4,4 +4,4 @@ export { dgettext } from "./dgettext";
 export { dngettext } from "./dngettext";
 export { gettext } from "./gettext";
 export { ngettext } from "./ngettext";
-export { pgettext } from "./pgettext";
+export { dcpgettext, dpgettext, pgettext } from "./pgettext";
