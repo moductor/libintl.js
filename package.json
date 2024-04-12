@@ -1,6 +1,6 @@
 {
   "name": "libintl",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "JavaScript bindings for libraries implementing GetText. (GLib, libintl, libc, …)",
   "repository": "moductor/libintl.js",
   "license": "MIT",
