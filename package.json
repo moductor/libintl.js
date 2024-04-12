@@ -1,6 +1,6 @@
 {
   "name": "libintl",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "JavaScript bindings for libraries implementing GetText. (GLib, libintl, libc, …)",
   "repository": "moductor/libintl.js",
   "license": "MIT",
@@ -16,6 +16,9 @@
     "gettext-library"
   ],
   "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "scripts": {
     "compile": "esbuild --platform=node --format=cjs --minify --outdir=dist src/*.ts src/**/*.ts",
     "declarations": "tsc --noEmit false --declaration --emitDeclarationOnly --outDir dist",
