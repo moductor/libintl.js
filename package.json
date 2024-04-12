@@ -22,6 +22,10 @@
     "build": "npm run compile && npm run declarations",
     "prepublishOnly": "npm run build"
   },
+  "dependencies": {
+    "glob": "^10.3.12",
+    "koffi": "^2.8.4"
+  },
   "devDependencies": {
     "@types/node": "^20.12.7",
     "esbuild": "^0.20.2",
@@ -32,8 +36,5 @@
   },
   "prettier": {
     "editorconfig": true
-  },
-  "dependencies": {
-    "koffi": "^2.8.4"
   }
 }

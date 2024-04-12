@@ -1,6 +1,7 @@
-import { existsSync, readdirSync } from "fs";
+import { existsSync } from "fs";
+import { globSync } from "glob";
 import { IKoffiLib, load } from "koffi";
-import { basename } from "path";
+import { basename, join } from "path";
 
 let lib: IKoffiLib | undefined;
 export function getLib(): IKoffiLib {
@@ -38,7 +39,7 @@ function getPlatformName() {
 }
 
 function findLibFile(paths: string[], extension: string) {
-  return listFiles(paths).find((file) => {
+  return listFiles(paths, extension).find((file) => {
     const name = basename(file);
     for (const lib of libs) {
       if (name.startsWith(`${lib}.${extension}`)) return true;
@@ -47,11 +48,13 @@ function findLibFile(paths: string[], extension: string) {
   });
 }
 
-function listFiles(paths: string[]) {
+function listFiles(paths: string[], extension: string) {
   const files: string[] = [];
   paths
     .filter((path) => existsSync(path))
-    .forEach((dir) => files.push(...readdirSync(dir)));
+    .forEach((dir) =>
+      files.push(...globSync(join(dir, "*", "**", `*.${extension}*`))),
+    );
   return files;
 }
 
