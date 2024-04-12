@@ -58,7 +58,13 @@ function listFiles(paths: string[]) {
 const libs = ["libglib-2.0", "libintl", "libc"];
 
 const dirs = {
-  linux: ["/usr/lib64", "/usr/local/lib64", "/usr/lib", "/usr/local/lib"],
+  linux: [
+    "/usr/lib64",
+    "/usr/local/lib64",
+    "/usr/lib",
+    "/usr/local/lib",
+    ...(process.env["LD_LIBRARY_PATH"]?.split(":") || []),
+  ],
   windows: process.env["PATH"]!.split(";"),
   macos: ["/usr/lib", "/usr/local/lib"],
 };
