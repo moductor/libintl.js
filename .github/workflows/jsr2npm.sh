@@ -34,11 +34,15 @@ tar -xzf "$DIST_TAR_FILE" -C "$DIST_DIR"
 DIST_DIR_EXT_NAME=$(ls "$DIST_DIR" | head -n 1)
 DIST_DIR_EXT="$DIST_DIR/$DIST_DIR_EXT_NAME"
 
-tmp=$(mktemp)
-jq ".name = \"$NPM_PACKAGE\"" "$DIST_DIR_EXT/package.json" > "$tmp" && mv "$tmp" "$DIST_DIR_EXT/package.json"
+NPM_PACKAGE_KEYS=( $(cat package.json | jq -r keys[]) )
+IGNORED_KEYS=( "type" "version" "dependencies" "exports" )
 
-tmp=$(mktemp)
-REPOSITORY=$(cat package.json | jq -r .repository)
-jq ".repository = \"$REPOSITORY\"" "$DIST_DIR_EXT/package.json" > "$tmp" && mv "$tmp" "$DIST_DIR_EXT/package.json"
+for KEY in ${NPM_PACKAGE_KEYS[@]}; do
+  if [[ ! $(echo ${IGNORED_KEYS[@]} | grep -Fw $KEY) ]]; then
+    VAL=$(cat package.json | jq ".$KEY")
+    RES=$(cat "$DIST_DIR_EXT/package.json" | jq --argjson val "$VAL" ". + { \"$KEY\": \$val }" --indent 2)
+    echo $RES | jq . > "$DIST_DIR_EXT/package.json"
+  fi
+done
 
 npm publish "./$DIST_DIR_EXT" $NPM_PUBLISH_ARGS
