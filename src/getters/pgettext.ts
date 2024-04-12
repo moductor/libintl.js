@@ -6,7 +6,7 @@ import { gettext } from "./gettext";
 /**
  * Similar to `gettext` but allows to add context to the message.
  */
-export function pgettext(_: string, msgid: string): string {
+export function pgettext(_msgctxt: string, msgid: string): string {
   return gettext(msgid);
 }
 
@@ -15,7 +15,7 @@ export function pgettext(_: string, msgid: string): string {
  */
 export function dpgettext(
   domainName: string,
-  _: string,
+  _msgctxt: string,
   msgid: string,
 ): string {
   return dgettext(domainName, msgid);
@@ -26,7 +26,7 @@ export function dpgettext(
  */
 export function dcpgettext(
   domainName: string,
-  _: string,
+  _msgctxt: string,
   msgid: string,
   category: LC,
 ): string {
