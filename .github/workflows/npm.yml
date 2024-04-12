@@ -1,13 +1,9 @@
 name: Publish to NPM
 
 on:
-  workflow_run:
-    workflows:
-      - "Publish to JSR"
+  push:
     branches:
       - main
-    types:
-      - completed
 
 jobs:
   publish:
