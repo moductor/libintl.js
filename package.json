@@ -15,9 +15,7 @@
     "gettext",
     "gettext-library"
   ],
-  "exports": {
-    ".": "./dist/index.js"
-  },
+  "exports": "./dist/index.js",
   "scripts": {
     "compile": "esbuild --platform=node --format=cjs --minify --outdir=dist src/*.ts src/**/*.ts",
     "declarations": "tsc --noEmit false --declaration --emitDeclarationOnly --outDir dist",

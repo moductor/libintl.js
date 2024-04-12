@@ -14,4 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm install
-      - run: npx jsr publish --allow-dirty
+      - run: |
+          VERSION=$(cat package.json | jq -r .version)
+          CONFIG=$(cat jsr.json | jq ". + { \"version\": \"$VERSION\" }")
+          echo $CONFIG | jq . > jsr.json
+          npx jsr publish --allow-dirty
